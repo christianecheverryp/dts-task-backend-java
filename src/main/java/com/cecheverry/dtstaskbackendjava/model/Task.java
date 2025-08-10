@@ -1,6 +1,7 @@
 package com.cecheverry.dtstaskbackendjava.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -14,17 +15,19 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Size(max = 100)
+    @NotBlank(message = "The title cannot be empty")
+    @Size(max = 100, message = "The title cannot exceed 100 characters")
     private String title;
 
+    @Size(max = 255, message = "The description cannot exceed 255 characters")
     private String description;
 
-    @NotNull
+    @NotNull(message = "The status is required")
     @Enumerated(EnumType.STRING)
     private TaskStatus status;
 
-    @NotNull
+    @NotNull(message = "The due date is required")
+    @FutureOrPresent(message = "The due date cannot be in the past")
     private LocalDateTime dueDateTime;
 
     public Long getId() {

@@ -26,6 +26,7 @@ The backend handles all task-related operations, including **creation, retrieval
 
 3. **Main API Endpoints**
    |Method	|Endpoint	  |Description	    |Body Example
+   |:---- |:---- |:---- |:----|
    |GET	    |/tasks	      |List all tasks	| —
    |GET	    |/tasks/{id}  |Get task by ID   | —
    |POST    |/tasks       |Create new task  |{ "title": "Prepare Report", "description": "Monthly HR report", "dueDateTime": "2025-09-01T09:00:00", "status": "PENDING" }
